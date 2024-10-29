@@ -1,0 +1,102 @@
+@Restaurants.API_HostAddress = https://localhost:7281
+@token = CfDJ8HnqurChrMxBudPojgK3VSnn3WtsjF6HmPZy3Oqo-tbkICc8bqXY1tXVDKNnH_Y4xaLnPAqCsEu5hRAHbZXhvuI719hCv7aCo8IKX707nDIGhdYCiOv2A0cDIbY3ozR_vGwoqNUWUDTcQ7laDJkgn7oZCz7Yg-kLstSaqFmJInIN68Hpc2-n5CnWSwgQIPK-BuQNr365HvwxHoWmiKtHSeCwg7w4VqgF2E2MT__Y0887t0TjTPgCWI00u4eaY2SHgXxYfVo1D71jae4JO3d9oTKi7KrulY7XB5OZvF2hvcQRV7jQQv_r61QNKOaErDOd9bxHR6y97uaLHSXeSwI5VSEEkURfNOKvDuOL9VIdHA0HdtYbm4BI1nJQNt1vZTGBTzAKrdi2q6NA2C-sbhCzRc--ZCZmKuLbiGMf3AknNex9jmog7N91V8rLeLawRldjj0ah8vlIAHKfXM64SU5gfFJFWXTJUBqdzWf-aalV7LHCik-GCU_hfalt3_UJOi7vqDgFTW3x_gKk08YFw9ftORNaMw1NjPmlNFp5YTY-R7w3ndY2CWk_hZxIOXwb_tRYDz0j05yJHlPMabo6ahnZebqIFnYfeM3lQqv413RefxhUOfqirFHE-BQkjdCr8x_DfmDbuNIxb6YQh1QBKDtxPQprwWEOR0z4TJRrlYcZJmRjSsarI2YZBpahZQ1qClwZAcxPlEi2cTwAydvPIu6EtvJkvBj5FjiIO_ssHevDspLt_o45YepVFHmjYXw0_kJXS9YSRCfmxqysnGvwj093FHbniUmoDdq5Qz8xQlBr2OSDIUHs-fZWIRdRQZV8vJkXysz7F8_nasn1GnGCInLcfmKhH3OYZlQ7Ask3kIDvcNzLnOWmrGVHWzVuLUSuQaX9Gg
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants?SearchPhrase=&PageSize=5&PageNumber=1&SortBy=Description&SortDirection=Ascending
+#Authorization: Bearer {{token}}
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/5
+Authorization: Bearer {{token}}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "Name": "Owner's restaurant",
+  "Description": "Ok",
+  "Category": "Ramen",
+  "HasDelivery": false,
+  "City": "Warszawa",
+  "ContactNumber": "525456789",
+  "PostalCode": "31-333"
+}
+
+###
+
+DELETE {{Restaurants.API_HostAddress}}/api/restaurants/5
+Authorization: Bearer {{token}}
+
+###
+
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/5
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "Name": "Update by owner",
+  "Description": "Zjadliwy ramen",
+  "HasDelivery": true
+}
+###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurant/21/dishes
+Content-Type: application/json
+
+{
+  "Name": "Belgian Fries 3",
+  "Description": "Kevin would be proud",
+  "Price": 5,
+  "KiloCalories": 100
+}
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurant/1/dishes
+Authorization: Bearer {{token}}
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurant/1/dishes/1
+Authorization: Bearer {{token}}
+
+###
+
+DELETE {{Restaurants.API_HostAddress}}/api/restaurant/1/dishes/51
+
+###
+
+DELETE {{Restaurants.API_HostAddress}}/api/restaurant/62/dishes
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/register
+Content-Type: application/json
+
+{
+  "email": "admin@admin.com",
+  "password": "Password!23"
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/login
+Content-Type: application/json
+
+{
+  "email": "owner@owner.com",
+  "password": "Password!23"
+}
+
+###
+
+PATCH {{Restaurants.API_HostAddress}}/api/identity/user
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "DateOfBirth": "2000-01-01"
+}
